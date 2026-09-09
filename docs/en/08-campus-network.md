@@ -3,7 +3,7 @@
 Campus networks (Ruijie eportal — the most common system in Chinese
 universities) expire sessions and drop you offline, while your server needs
 to be online 24/7. This recipe: a systemd timer that checks every 5 minutes
-and re-authenticates automatically. Field-proven unattended for months.
+and re-authenticates automatically. Running unattended since its launch in Sept 2026.
 
 > Applies to schools whose auth page URL contains `eportal/InterFace.do`
 > (standard Ruijie). Other systems (Srun, etc.) use different APIs — the

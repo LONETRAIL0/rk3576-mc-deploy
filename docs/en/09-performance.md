@@ -1,7 +1,7 @@
 # 09 · Performance (RK3576 field data)
 
 All numbers come from a real Rockchip RK3576 board (8 cores: 4×A72 + 4×A53,
-4GB RAM, eMMC, no swap) that has run this setup for months. Use them to pick
+4GB RAM, eMMC, no swap) that has been running this setup since Sept 2026. Use them to pick
 hardware and set expectations; scale accordingly for other boards/PCs.
 
 ## 1. Resource usage (daily operation, 3-5 players online)

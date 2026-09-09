@@ -3,7 +3,7 @@
 
 Generic version for any school whose portal is `eportal/InterFace.do`
 (the standard Ruijie eportal interface). Adapted from a real deployment
-that has run unattended for months.
+running unattended since Sept 2026.
 
 Credentials AND the portal address are read at runtime from
 credentials next to this script (root-only, mode 600) — no secrets,
