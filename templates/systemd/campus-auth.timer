@@ -1,0 +1,11 @@
+[Unit]
+Description=Run campus auto-login every 5 minutes
+
+[Timer]
+# 开机 30 秒先试一次，之后每 5 分钟检查（已在线时 probe 204 秒退，开销可忽略）
+OnBootSec=30
+OnUnitActiveSec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Campus network auto-login (Ruijie eportal)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/campus-auth/campus-auth.py
+# 登录失败 exit 1 靠 timer 重试；journalctl -u campus-auth 看原因
+
+[Install]
+WantedBy=multi-user.target

@@ -4,3 +4,4 @@
 staging/
 .venv/
 __pycache__/
+.mimosa/

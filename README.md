@@ -21,6 +21,8 @@
 | [docs/zh/05](docs/zh/05-backup-monitor.md) | 每 2 小时零停机热备份（三道安全网）+ glances 监控 |
 | [docs/zh/06](docs/zh/06-mods-whitelist.md) | Mod 管理流程 + 离线服 UUID 白名单大坑 |
 | [docs/zh/07](docs/zh/07-operations.md) | Chunky 预生成、数据包、踩坑速查表 |
+| [docs/zh/08](docs/zh/08-campus-network.md) | 校园网（锐捷 eportal）自动认证，5 分钟自愈 |
+| [docs/zh/09](docs/zh/09-performance.md) | RK3576 实测性能：内存/温度/预生成速度/功耗 |
 
 English versions: [docs/en/](docs/en/)（English mirror）
 
@@ -63,6 +65,8 @@ A complete, field-tested recipe for running a Minecraft Fabric server 24/7 on an
 | [docs/en/05](docs/en/05-backup-monitor.md) | 2h zero-downtime hot backups (3 safety nets) + glances |
 | [docs/en/06](docs/en/06-mods-whitelist.md) | Mod management + the offline-mode UUID pitfall |
 | [docs/en/07](docs/en/07-operations.md) | Chunky pregen, datapack, pitfall cheat-sheet |
+| [docs/en/08](docs/en/08-campus-network.md) | Campus network (Ruijie eportal) auto-login, 5-min self-healing |
+| [docs/en/09](docs/en/09-performance.md) | RK3576 field performance: RAM, temps, pregen speed, power |
 
 Quick start: [01](docs/en/01-hardware-os.md) → [02](docs/en/02-mc-server.md) → [03](docs/en/03-systemd.md) → [04](docs/en/04-frp.md) → [05](docs/en/05-backup-monitor.md).
 
