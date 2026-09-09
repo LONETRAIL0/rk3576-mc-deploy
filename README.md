@@ -6,6 +6,8 @@
 
 > **⚠️ 请先读我：作者是新手，本文仅供参考**
 >
+> **适用人群**：本教程不是 Linux 入门教学，默认你有一定 Linux 基础——会用命令行和 SSH、知道 systemd 和文件权限是什么、装过系统。零基础的话请先补课，或者找个懂行的朋友陪着弄。
+>
 > 我不是专业运维，这套东西是我边查边踩坑攒出来的个人记录，能跑，但不代表是最佳实践。其中不少操作涉及 `systemctl`、SSH 配置、防火墙/内网穿透等系统级改动，**操作不当可能导致系统无法远程登录、数据丢失或安全暴露**。
 >
 > 请务必：① 动手前看懂每条命令再执行，不确定就先查；② 先在自己可折腾的环境试，别直接上主力设备；③ 改配置前备份原文件；④ 以官方文档为准，本文只能当参考路线，不要全信。
@@ -51,6 +53,8 @@ English versions: [docs/en/](docs/en/)（English mirror）
 ## English
 
 > **⚠️ Read this first: the author is a beginner — don't trust this blindly**
+>
+> **Who this is for**: this is not a Linux tutorial. It assumes basic Linux literacy — you're comfortable with the command line and SSH, you know what systemd and file permissions are, you've installed an OS before. Complete beginners: learn the basics first, or bring a friend who knows their way around.
 >
 > I'm not a professional sysadmin. This is a personal field-notes project assembled through trial and error. It works for me, but it is not necessarily best practice. Many steps involve system-level changes (`systemctl`, SSH config, tunneling/firewall) where a mistake can lock you out of your machine, lose data, or expose you to the internet.
 >
