@@ -4,6 +4,12 @@
 
 [English](#english) | 中文
 
+> **⚠️ 请先读我：作者是新手，本文仅供参考**
+>
+> 我不是专业运维，这套东西是我边查边踩坑攒出来的个人记录，能跑，但不代表是最佳实践。其中不少操作涉及 `systemctl`、SSH 配置、防火墙/内网穿透等系统级改动，**操作不当可能导致系统无法远程登录、数据丢失或安全暴露**。
+>
+> 请务必：① 动手前看懂每条命令再执行，不确定就先查；② 先在自己可折腾的环境试，别直接上主力设备；③ 改配置前备份原文件；④ 以官方文档为准，本文只能当参考路线，不要全信。
+
 ## 内容地图
 
 | 文档 | 内容 |
@@ -39,6 +45,12 @@ English versions: [docs/en/](docs/en/)（English mirror）
 
 <a name="english"></a>
 ## English
+
+> **⚠️ Read this first: the author is a beginner — don't trust this blindly**
+>
+> I'm not a professional sysadmin. This is a personal field-notes project assembled through trial and error. It works for me, but it is not necessarily best practice. Many steps involve system-level changes (`systemctl`, SSH config, tunneling/firewall) where a mistake can lock you out of your machine, lose data, or expose you to the internet.
+>
+> Please: ① understand every command before running it; ② experiment on a disposable device first, not your main machine; ③ back up config files before editing; ④ treat official documentation as the authority — this guide is a reference route, not gospel.
 
 A complete, field-tested recipe for running a Minecraft Fabric server 24/7 on an ARM single-board computer (example: Rockchip RK3576): systemd wrapping, zero-downtime hot backups, FRP tunneling, monitoring, and a pitfall cheat-sheet. Follow `docs/en/` from zero to a public server. Works on x86 mini-PCs / NAS too.
 
