@@ -1,6 +1,6 @@
-# rk3576-mc-deploy
+# 基于立创·泰山派 RK3576 的 MC 26.2 Fabric 服务器部署指南
 
-在 ARM 开发板（示例：泰山派 RK3576）上 24/7 运行 Minecraft Fabric 服务器的一整套部署方案：systemd 托管、零停机热备份、FRP 内网穿透、监控与踩坑速查。照着 `docs/` 走即可从零复刻。x86 小主机/NAS 同样适用。
+在立创·泰山派 RK3576 开发板（arm64，4GB）上 24/7 运行 Minecraft 26.2 Fabric 服务器的一整套部署方案：systemd 托管、零停机热备份、FRP 内网穿透、校园网自动认证、监控与踩坑速查。照着 `docs/` 走即可从零复刻。x86 小主机/NAS 同样适用。
 
 [English](#english) | 中文
 
@@ -50,7 +50,7 @@ English versions: [docs/en/](docs/en/)（English mirror）
 ---
 
 <a name="english"></a>
-## English
+## English · MC 26.2 Fabric Server on the LCKFB Taishan Pi RK3576
 
 > **⚠️ Read this first: the author is a beginner — don't trust this blindly**
 >
@@ -62,7 +62,7 @@ English versions: [docs/en/](docs/en/)（English mirror）
 >
 > One more honest admission: **the guide itself is unverified as a whole** — it has only ever been walked through on my own single board, never followed end-to-end by someone else on a clean machine. Steps may have gaps, dependencies may have moved. If you get stuck, it may well be the docs' fault, not yours — please open an issue.
 
-A complete, field-tested recipe for running a Minecraft Fabric server 24/7 on an ARM single-board computer (example: Rockchip RK3576): systemd wrapping, zero-downtime hot backups, FRP tunneling, monitoring, and a pitfall cheat-sheet. Follow `docs/en/` from zero to a public server. Works on x86 mini-PCs / NAS too.
+A complete, field-tested recipe for running a Minecraft 26.2 Fabric server 24/7 on the LCKFB "Taishan Pi" RK3576 (ARM, 4GB RAM): systemd wrapping, zero-downtime hot backups, FRP tunneling, campus-network auto-login, monitoring, and a pitfall cheat-sheet. Follow `docs/en/` from zero to a public server. Works on x86 mini-PCs / NAS too.
 
 | Doc | Contents |
 |---|---|
