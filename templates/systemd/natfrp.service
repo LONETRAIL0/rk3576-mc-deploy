@@ -1,0 +1,16 @@
+[Unit]
+Description=SakuraFrp tunnel for Minecraft server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# -f 参数格式：<访问密钥>:<隧道ID>[,<隧道ID2>,...]
+# 访问密钥只在板上单元文件里，绝不提交到任何仓库/文档。
+# 多隧道示例：游戏 TCP + 语音 UDP 各一条，逗号追加即可。
+ExecStart=/opt/natfrp/frpc -f <YOUR_SAKURAFRP_ACCESS_KEY>:<YOUR_TUNNEL_ID>,<YOUR_VOICE_TUNNEL_ID>
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

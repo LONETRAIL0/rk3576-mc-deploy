@@ -1,0 +1,12 @@
+[Unit]
+Description=Run Minecraft hot backup every 2 hours
+
+[Timer]
+# 00/2 = 从 0 点起每 2 小时（0/2/4/.../22）。按需改 00/4 等档位。
+OnCalendar=*-*-* 00/2:00:00
+# Persistent=true 会把"错过"的档位立即补跑：配合上面的开机守卫使用。
+# 已实测：换 OnCalendar 后 restart timer 会立刻补跑一次，属预期行为。
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=Minecraft hot backup (save-off, zero downtime, keep 4)
+
+[Service]
+Type=oneshot
+# 无 RTC 时钟跳变会让 Persistent timer 误触发：开机 15 分钟内一律跳过（实测踩坑）
+ExecCondition=/bin/sh -c '[ $$(cut -d. -f1 /proc/uptime) -ge 900 ] || { echo "skip backup: uptime < 900s (clock-jump guard)"; exit 1; }'
+# 热备份流程：save-off 冻结世界落盘 -> save-all flush -> tar（服务器不停，玩家无感）-> save-on。
+# 三道安全网：
+#   1) ExecCondition 开机守卫（上行）
+#   2) 磁盘可用 <6G 跳过
+#   3) trap EXIT 兜底必发 save-on —— 漏发 save-on = 世界静默停止自动保存，头号风险
+# 广播开始/结束走 backup-notify 脚本（tellraw 参数在 Python 内拼 unicode 转义，
+# 绕开 systemd/shell 多层引号转义；单元内联 tellraw 中文会翻车，勿回退）。
+# 注意：单元里 shell 变量必须写 $$（systemd 层转义）。
+# tar 备份内容按需增删世界目录；保留最近 4 份（ls -1t | tail -n +5 删旧）。
+ExecStart=/bin/sh -c 'set -u; RCON="timeout 30 python3 /opt/mcserver/mc-rcon.py"; B=/opt/mcserver/backups; mkdir -p $$B; AV=$$(df -BG --output=avail / | tail -1 | tr -dc 0-9); [ "$$AV" -ge 6 ] || { echo "skip backup: only $${AV}G free"; exit 1; }; trap "timeout 20 $$RCON save-on >/dev/null 2>&1 || :; exit 0" EXIT; if systemctl is-active --quiet minecraft.service; then $$RCON "save-off"; $$RCON "save-all flush"; sleep 2; python3 /opt/mcserver/backup-notify start; fi; nice -n 19 tar -czf $$B/mc-$$(date +%%Y%%m%%d-%%H%%M).tar.gz -C /opt/mcserver/server world world_nether world_the_end server.properties whitelist.json ops.json usercache.json 2>/dev/null; ls -1t $$B/mc-*.tar.gz | tail -n +5 | xargs -r rm -f; if systemctl is-active --quiet minecraft.service; then $$RCON "save-on"; python3 /opt/mcserver/backup-notify end; fi; echo "backup done: $$(ls -1t $$B/mc-*.tar.gz | head -1)"'

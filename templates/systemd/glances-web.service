@@ -1,0 +1,14 @@
+[Unit]
+Description=Glances web dashboard (server resource monitor)
+After=network-online.target
+
+[Service]
+Type=simple
+# 只监听 127.0.0.1：查看时 ssh -L 61208:127.0.0.1:61208 <host> 后开 http://localhost:61208/
+# Ubuntu apt 版 glances 缺前端产物（网页空白），需 pip 安装，见 docs/05。
+ExecStart=/usr/local/bin/glances -w -B 127.0.0.1
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""Backup broadcast to the MC server console (Chinese-safe).
+
+Usage: backup-notify.py start|end
+
+tellraw 参数在 Python 内拼 unicode 转义，彻底绕开 systemd/sh 的多层引号转义；
+经 subprocess 直调 mc-rcon.py（无 shell 中转）。应答原样打印，报错可在 journal 看到。
+Edit MSGS below to change the in-game announcement text.
+"""
+import os
+import subprocess
+import sys
+
+RCON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mc-rcon.py")
+
+MSGS = {
+    "start": "服务器正在备份中，可能有轻微卡顿，请见谅",
+    "end": "服务器备份完毕",
+}
+
+key = sys.argv[1] if len(sys.argv) > 1 else ""
+msg = MSGS.get(key)
+if not msg:
+    sys.exit("usage: backup-notify.py start|end")
+
+esc = "".join("\\u%04x" % ord(c) for c in msg)
+cmd = 'tellraw @a {"text":"' + esc + '"}'
+r = subprocess.run(
+    ["python3", RCON, cmd],
+    capture_output=True, text=True,
+)
+print("[notify:%s] rc=%s resp=%r" % (key, r.returncode, (r.stdout + r.stderr).strip()))

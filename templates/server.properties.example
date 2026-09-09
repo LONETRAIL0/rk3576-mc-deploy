@@ -1,0 +1,23 @@
+#Minecraft server properties（关键项，其余保持默认即可）
+# 基于 MC 26.2 / Fabric 服务端实测配置
+motd=My ARM Board Server
+server-port=25565
+max-players=10
+difficulty=easy
+gamemode=survival
+white-list=true
+enforce-whitelist=true
+online-mode=false
+enforce-secure-profile=false
+view-distance=8
+simulation-distance=6
+# 空载暂停：没人时冻结 tick 省电（有玩家进来自动恢复）。
+# 注意：验证 schedule/数据包类功能时要么有人在线，要么临时改 0。
+pause-when-empty-seconds=60
+# RCON（备份脚本依赖）
+enable-rcon=true
+rcon.port=25575
+rcon.password=<YOUR_RCON_PASSWORD>
+# 语音聊天走独立 FRP UDP 隧道时必须设 voice_host，
+# 留空客户端会默认连 游戏服地址:24454 导致哑掉（实测大坑）：
+#voice_host=<YOUR_FRP_HOST>:<YOUR_FRP_VOICE_PORT>
